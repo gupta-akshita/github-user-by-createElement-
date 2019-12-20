@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .per{
+            display: inline-block;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0px 4px 4px #ccc;
+            width: 200px;
+            margin: 20px;
+            padding: 20px
+        }
+
+        .para{
+            display: inline-block;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0px 4px 4px #ccc;
+            width: 200px;
+            margin: 20px;
+            padding: 20px
+        }
+    </style>
+
+</head>
+<body>
+
+   
+    <script>
+        fetch('https://api.github.com/users').then(res=>res.json()).then(data=>{
+            console.log(data)
+            for(var i=0;i<data.length;i++){
+                var divElement2 = document.createElement('p')
+                divElement2.className='para'
+                divElement2.innerHTML = `
+                    <img src="${data[i].avatar_url}" style="width:100%">
+                    <br>
+                    ${data[i].login} <br>
+                    <a href="${data[i].html_url}" target="_blank">See More</a>
+                `
+                divElement.appendChild(divElement2) 
+                
+            }
+        })
+        var divElement = document.createElement('div')
+        document.body.appendChild(divElement)
+        
+    </script>
+    
+</body>
+</html>
